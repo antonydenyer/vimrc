@@ -97,3 +97,40 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap H 0
  " Go to end of line
 nnoremap L $
+
+nnoremap <F3> :set invpaste paste?<CR>
+set pastetoggle=<F3>
+set showmode
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Remap annoying default keymaps
+"""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Unmap the arrow keys
+inoremap <Up>             <NOP>
+inoremap <Down>           <NOP>
+inoremap <Left>           <NOP>
+inoremap <Right>          <NOP>
+noremap <Up>              <NOP>
+noremap <Down>            <NOP>
+noremap <Left>            <NOP>
+noremap <Right>           <NOP>
+" Unmap the infuriating help shortcut key
+inoremap <F1>             <ESC>
+nnoremap <F1>             <ESC>
+vnoremap <F1>             <ESC>
+" Move up and down by screenline instead of file line
+nnoremap j                gj
+nnoremap k                gk
+" Fix vim's regexp search to use perl regexps
+nnoremap /                /\v
+vnoremap \                /\v
+" Move to matching bracket
+nnoremap <tab>            %
+vnoremap <tab>            %
+" Don't enter ex mode
+noremap Q                 <nop>
+
+" Turn off search highlighting
+nnoremap <leader><space>  :noh<cr>
+" Bring up ack ready to searc
+nnoremap <leader>a        :Ack!
