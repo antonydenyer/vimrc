@@ -16,7 +16,6 @@ set hlsearch              " Keep search highlight after complete
 set relativenumber        " Show line numbers
 set showmode              " Show the current mode in the last line
 set showcmd               " Show the current command in the last line
-set showmatch             " Highlight matching brackets
 set title                 " Set the window title in the terminal
 set wildmenu              " Improve tab completion menu
 set wildmode=list:longest " Tab complete longest common string and show list
@@ -44,8 +43,6 @@ set autowrite             " Autowrite files when leaving
 set dictionary=/usr/share/dict/words
 set number
 set showmatch " Highlight matching brackets
-set backspace=2 " Make backspace work as expected (indent, eol, start)
-
 
 
 " Indentation
