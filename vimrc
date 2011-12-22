@@ -95,8 +95,8 @@ nnoremap H 0
  " Go to end of line
 nnoremap L $
 
-nnoremap <F3> :set invpaste paste?<CR>
-set pastetoggle=<F3>
+nnoremap <F12> :set invpaste paste?<CR>
+set pastetoggle=<F12>
 set showmode
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -182,3 +182,43 @@ au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Syntastic configuration
+"""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:syntastic_mode_map = { 'mode': 'active',
+                         \ 'active_filetypes': [ 'javascript' ],
+                         \ 'passive_filetypes': [] }
+let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Statusline
+"""""""""""""""""""""""""""""""""""""""""""""""""""""
+set statusline=%f                              " Path
+set statusline+=%m                             " Modified flag
+set statusline+=%r                             " Readonly flag
+
+set statusline+=%#error#                       " Error highlight
+set statusline+=%{SyntasticStatuslineFlag()}   " Show syntastic error status
+set statusline+=%*                             " Reset highlighting
+
+set statusline+=%=                             " Right align
+
+set statusline+=%c,                            " Cursor column
+set statusline+=%l/%L                          " Cursor line / total lines
+set statusline+=(
+set statusline+=%{&ff}                         " Line ending format
+set statusline+=/
+set statusline+=%{strlen(&fenc)?&fenc:&enc}    " Encoding
+set statusline+=/
+set statusline+=%{&ft}                         " Filetype
+set statusline+=)
+
+" Always show status line
+set laststatus=2
+
+augroup ft_statusline_background_colour
+    au InsertEnter * hi StatusLine ctermfg=15 guifg=#FF3145
+    au InsertLeave * hi StatusLine ctermfg=236 guifg=#CD5907
+augroup END
+
