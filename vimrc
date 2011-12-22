@@ -198,6 +198,8 @@ set statusline=%f                              " Path
 set statusline+=%m                             " Modified flag
 set statusline+=%r                             " Readonly flag
 
+set statusline+=%{fugitive#statusline()}       " Show git repo status
+
 set statusline+=%#error#                       " Error highlight
 set statusline+=%{SyntasticStatuslineFlag()}   " Show syntastic error status
 set statusline+=%*                             " Reset highlighting
@@ -221,4 +223,6 @@ augroup ft_statusline_background_colour
     au InsertEnter * hi StatusLine ctermfg=15 guifg=#FF3145
     au InsertLeave * hi StatusLine ctermfg=236 guifg=#CD5907
 augroup END
+
+
 
