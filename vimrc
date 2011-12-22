@@ -134,3 +134,23 @@ noremap Q                 <nop>
 nnoremap <leader><space>  :noh<cr>
 " Bring up ack ready to searc
 nnoremap <leader>a        :Ack!
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Auto close character sequences
+"""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Auto append closing curly braces and skip over closing braces
+inoremap {            {}<Left>
+inoremap {<CR>        {<CR>}<ESC>O
+inoremap {{           {
+inoremap {}           {}
+inoremap <expr> }     strpart(getline('.'), col('.') - 1, 1) == "}"
+                     \? "\<Right>" : "}"
+" Parentheses
+inoremap (            ()<Left>
+inoremap <expr> )     strpart(getline('.'), col('.') - 1, 1) == ")"
+                     \? "\<Right>" : ")"
+" C-style comments
+inoremap /*           /**/<Left><Left>
+inoremap /*<Space>    /*<Space><Space>*/<Left><Left><Left>
+inoremap /*<CR>       /*<CR>*/<Esc>O
+inoremap <Leader>/*   /*
